@@ -1,39 +1,32 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Reliability laws</title>
-    <!-- Plotly.js -->
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <!--vue.js-->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
-  </head>
-  <body>
-    <p>Parameters</p>
-    <table>
-      <tr>
-        <td>Minimal Age :</td>
-        <td><input type="number" id="MinimalAge" value = "30" onchange="updateWeibullGraph();updateGompertzGraph();"></input></td>
-      </tr>
-      <tr>
-        <td>Failure Rate at Minimal Age:</td>
-        <td><input type="number" id="FailureRateAtMinimalAge" value = "0.01"  onchange="updateWeibullGraph();updateGompertzGraph();"></input></td>
-      </tr>
-      <tr>
-        <td>Maximal Age :</td>
-        <td><input type="number" id="MaximalAge" value = "80"  onchange="updateWeibullGraph();updateGompertzGraph();"></input></td>
-      </tr>
-      <tr>
-        <td>Failure Rate at Maximal Age</td>
-        <td><input type="number" id="FailureRateAtMaximalAge" value = "0.9"  onchange="updateWeibullGraph();updateGompertzGraph();"></input></td>
-      </tr>
-    </table>
-    <p id="WeibullShape">Weibull Shape: </p>
-    <p id="WeibullScale">Weibull Scale: </p>
-    <p id="GompertzShape">Gompertz Shape: </p>
-    <p id="GompertzScale">Gompertz Scale: </p>
-    <div id="WeibullGraph"></div>
-    <div id="GompertzGraph"></div>
-    <script type="text/javascript" src="distributions.js"></script>
-  </body>
-</html>
+---
+layout: default
+---
+<body>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <p>Parameters</p>
+  <table>
+    <tr>
+      <td>Minimal Age :</td>
+      <td><input type="number" id="MinimalAge" value = "30" onchange="updateWeibullGraph();updateGompertzGraph();"></input></td>
+    </tr>
+    <tr>
+      <td>Failure Rate at Minimal Age:</td>
+      <td><input type="number" id="FailureRateAtMinimalAge" value = "0.01"  onchange="updateWeibullGraph();updateGompertzGraph();"></input></td>
+    </tr>
+    <tr>
+      <td>Maximal Age :</td>
+      <td><input type="number" id="MaximalAge" value = "80"  onchange="updateWeibullGraph();updateGompertzGraph();"></input></td>
+    </tr>
+    <tr>
+      <td>Failure Rate at Maximal Age</td>
+      <td><input type="number" id="FailureRateAtMaximalAge" value = "0.9"  onchange="updateWeibullGraph();updateGompertzGraph();"></input></td>
+    </tr>
+  </table>
+  <p id="WeibullShape">Weibull Shape: </p>
+  <p id="WeibullScale">Weibull Scale: </p>
+  <p id="GompertzShape">Gompertz Shape: </p>
+  <p id="GompertzScale">Gompertz Scale: </p>
+  <div id="WeibullGraph"></div>
+  <div id="GompertzGraph"></div>
+  <script type="text/javascript" src="distributions.js"></script>
+</body>
