@@ -11,7 +11,7 @@ function scaleWeibull(MinimalAge, Shape, FailureRateAtMinimalAge){
   return(MinimalAge * Math.pow(Shape/(MinimalAge*FailureRateAtMinimalAge), 1/Shape));
 }
 function densityWeibull(Shape, Scale, x){
-  return(Shape/Scale * Math.pow(x/Scale, Shape - 1) * Math.exp(-Math.pow(x/Scale, Shape)));
+  return(Shape/Scale * Math.pow(x/Scale, Shape - 1) * Math.exp(-(Math.pow(x/Scale, Shape))));
 }
 function densityGompertz(Shape, Scale, x){
   return(Scale*Shape*Math.exp(Scale*x)*Math.exp(Shape)*Math.exp(-Shape*Math.exp(Scale*x)));
@@ -21,13 +21,15 @@ function myFunction(p1, p2) {
 }
 
 function updateGompertzGraph(){
-  var MinimalAge = 30;
-  var MaximalAge = 100;
-  var FailureRateAtMinimalAge = 0.01;
-  var FailureRateAtMaximalAge = 0.9;
+  var MinimalAge = parseFloat(document.getElementById("MinimalAge").value);
+  var MaximalAge = parseFloat(document.getElementById("MaximalAge").value);
+  var FailureRateAtMinimalAge = parseFloat(document.getElementById("FailureRateAtMinimalAge").value);
+  var FailureRateAtMaximalAge = parseFloat(document.getElementById("FailureRateAtMaximalAge").value);
   
   Scale = scaleGompertz(MaximalAge, MinimalAge, FailureRateAtMaximalAge, FailureRateAtMinimalAge);
   Shape = shapeGompertz(MinimalAge, Scale);
+  document.getElementById("GompertzShape").innerHTML="Gompertz Shape = " + Shape.toString();
+  document.getElementById("GompertzScale").innerHTML="Gompertz Scale = " + Scale.toString();
   
   var listX = [];
   var listY = [];
@@ -48,14 +50,15 @@ function updateGompertzGraph(){
 }
 
 function updateWeibullGraph(){
-  var MinimalAge = 30;
-  var MaximalAge = 100;
-  var FailureRateAtMinimalAge = 0.01;
-  var FailureRateAtMaximalAge = 0.9;
+  var MinimalAge = parseFloat(document.getElementById("MinimalAge").value);
+  var MaximalAge = parseFloat(document.getElementById("MaximalAge").value);
+  var FailureRateAtMinimalAge = parseFloat(document.getElementById("FailureRateAtMinimalAge").value);
+  var FailureRateAtMaximalAge = parseFloat(document.getElementById("FailureRateAtMaximalAge")).value;
   
   Scale = scaleWeibull(MaximalAge, MinimalAge, FailureRateAtMaximalAge, FailureRateAtMinimalAge);
   Shape = shapeWeibull(MinimalAge, Scale);
-  
+  document.getElementById("WeibullShape").innerHTML="Weibull Shape = " + Shape.toString();
+  document.getElementById("WeibullScale").innerHTML="Weibull Scale = " + Scale.toString();
   var listX = [];
   var listY = [];
   for (var i = 0; i <= 5; i+=0.01) {
