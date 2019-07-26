@@ -53,7 +53,7 @@ function updateWeibullGraph(){
   var MinimalAge = parseFloat(document.getElementById("MinimalAge").value);
   var MaximalAge = parseFloat(document.getElementById("MaximalAge").value);
   var FailureRateAtMinimalAge = parseFloat(document.getElementById("FailureRateAtMinimalAge").value);
-  var FailureRateAtMaximalAge = parseFloat(document.getElementById("FailureRateAtMaximalAge")).value;
+  var FailureRateAtMaximalAge = parseFloat(document.getElementById("FailureRateAtMaximalAge").value);
   
   Shape = shapeWeibull(FailureRateAtMinimalAge, FailureRateAtMaximalAge, MinimalAge, MaximalAge);
   Scale = scaleWeibull(MinimalAge, Shape, FailureRateAtMinimalAge);
