@@ -12,7 +12,7 @@ layout: default
     </tr>
     <tr>
       <td>Failure Rate at Minimal Age:</td>
-      <td><input type="number" id="FailureRateAtMinimalAge" value = "0.01"  onchange="updateWeibullGraph();updateGompertzGraph();"></input></td>
+      <td><input type="number" id="FailureRateAtMinimalAge" value = "0.01" step="0.01" onchange="updateWeibullGraph();updateGompertzGraph();"></input></td>
     </tr>
     <tr>
       <td>Maximal Age :</td>
@@ -20,7 +20,7 @@ layout: default
     </tr>
     <tr>
       <td>Failure Rate at Maximal Age</td>
-      <td><input type="number" id="FailureRateAtMaximalAge" value = "0.9"  onchange="updateWeibullGraph();updateGompertzGraph();"></input></td>
+      <td><input type="number" id="FailureRateAtMaximalAge" value = "0.90" step = "0.01" onchange="updateWeibullGraph();updateGompertzGraph();"></input></td>
     </tr>
   </table>
   <p id="WeibullShape">Weibull Shape: </p>
