@@ -1,4 +1,4 @@
-function shapeGompertz(FailureRateAtMinimalAge, Scale){
+function shapeGompertz(FailureRateAtMinimalAge,MinimalAge,Scale){
   return(FailureRateAtMinimalAge/(Scale * Math.exp(Scale*MinimalAge)));
 }
 function scaleGompertz(MaximalAge, MinimalAge, FailureRateAtMaximalAge, FailureRateAtMinimalAge){
@@ -27,7 +27,7 @@ function updateGompertzGraph(){
   var FailureRateAtMaximalAge = parseFloat(document.getElementById("FailureRateAtMaximalAge").value);
   
   Scale = scaleGompertz(MaximalAge, MinimalAge, FailureRateAtMaximalAge, FailureRateAtMinimalAge);
-  Shape = shapeGompertz(FailureRateAtMinimalAge, Scale);
+  Shape = shapeGompertz(FailureRateAtMinimalAge, MinimalAge, Scale);
   document.getElementById("GompertzShape").innerHTML="Gompertz Shape = " + Shape.toString();
   document.getElementById("GompertzScale").innerHTML="Gompertz Scale = " + Scale.toString();
   
