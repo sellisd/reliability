@@ -1,5 +1,5 @@
 function shapeGompertz(MinimalAge, Scale){
-  return(MinimalAge/(Scale * Math.exp(Scale*MinimalAge)));
+  return(FailureRateAtMinimalAge/(Scale * Math.exp(Scale*MinimalAge)));
 }
 function scaleGompertz(MaximalAge, MinimalAge, FailureRateAtMaximalAge, FailureRateAtMinimalAge){
   return(Math.log(FailureRateAtMaximalAge/FailureRateAtMinimalAge)/(MaximalAge-MinimalAge));
