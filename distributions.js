@@ -127,7 +127,7 @@ function updateWeibullGraph(){
 
   Plotly.newPlot('WeibullDensity', data1, {title: 'Weibull Density Distribution'}, {showSendToCloud: false});
   Plotly.newPlot('WeibullReliability', data2, {title: 'Weibull Reliability Distribution'}, {showSendToCloud: false});
-  Plotly.newPlot('WeibullFailure', data3, {title: 'Weibull Reliability Distribution'}, {showSendToCloud: false});
+  Plotly.newPlot('WeibullFailure', data3, {title: 'Weibull Failure Rate'}, {showSendToCloud: false});
 }
 
 updateWeibullGraph();
