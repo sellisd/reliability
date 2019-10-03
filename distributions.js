@@ -16,8 +16,12 @@ function densityWeibull(Shape, Scale, x){
 function densityGompertz(Shape, Scale, x){
   return(Scale*Shape*Math.exp(Scale*x)*Math.exp(Shape)*Math.exp(-Shape*Math.exp(Scale*x)));
 }
-function myFunction(p1, p2) {
-  return p1 * p2;   // The function returns the product of p1 and p2
+function reliabilityGompertz(Shape, Scale, x){
+  return Math.exp(-Shape*(Math.exp(Scale*x)-1));
+}
+
+function reliabilityWeibull(Shape, Scale, x){
+  return Math.exp(-(Math.pow(x/Scale,Shape)));
 }
 
 function updateGompertzGraph(){
@@ -32,21 +36,31 @@ function updateGompertzGraph(){
   document.getElementById("GompertzScale").innerHTML="Gompertz Scale = " + Scale.toString();
   
   var listX = [];
-  var listY = [];
-  for (var i = 0; i <= 5; i+=0.01) {
+  var listY1 = [];
+  var listY2 = [];
+  for (var i = 0; i <= 200; i+=0.01) {
       listX.push(i);
-      listY.push(densityGompertz(Shape, Scale, i));
+      listY1.push(densityGompertz(Shape, Scale, i));
+      listY2.push(reliabilityGompertz(Shape, Scale, i));
   }
   
   
   var trace1 = {
     x: listX,
-    y: listY,
+    y: listY1,
     type: 'scatter'
   };
-  var data = [trace1];
-      
-  Plotly.newPlot('GompertzGraph', data, {title: 'Gompertz Distribution'}, {showSendToCloud: false});
+  var data1 = [trace1];
+
+  var trace2 = {
+    x: listX,
+    y: listY2,
+    type: 'scatter'
+  }
+  var data2 = [trace2];
+
+  Plotly.newPlot('GompertzDensity', data1, {title: 'Gompertz Density Distribution'}, {showSendToCloud: false});
+  Plotly.newPlot('GompertzReliability', data2, {title: 'Gompertz Reliability Distribution'}, {showSendToCloud: false});
 }
 
 function updateWeibullGraph(){
@@ -60,22 +74,32 @@ function updateWeibullGraph(){
   document.getElementById("WeibullShape").innerHTML="Weibull Shape = " + Shape.toString();
   document.getElementById("WeibullScale").innerHTML="Weibull Scale = " + Scale.toString();
   var listX = [];
-  var listY = [];
-  for (var i = 0; i <= 5; i+=0.01) {
+  var listY1 = [];
+  var listY2 = [];
+  for (var i = 0; i <= 200; i+=0.01) {
       listX.push(i);
-      listY.push(densityWeibull(Shape, Scale, i));
+      listY1.push(densityWeibull(Shape, Scale, i));
+      listY2.push(reliabilityWeibull(Shape, Scale, i));
   }
   
 
   var trace1 = {
     x: listX,
-    y: listY,
+    y: listY1,
     type: 'scatter'
   };
   
-  var data = [trace1];
+  var trace2 = {
+    x: listX,
+    y: listY2,
+    type: 'scatter'
+  };
+
+  var data1 = [trace1];
+  var data2 = [trace2];
       
-  Plotly.newPlot('WeibullGraph', data, {title: 'Weibull Distribution'}, {showSendToCloud: false});
+  Plotly.newPlot('WeibullDensity', data1, {title: 'Weibull Density Distribution'}, {showSendToCloud: false});
+  Plotly.newPlot('WeibullReliability', data2, {title: 'Weibull Reliability Distribution'}, {showSendToCloud: false});
 }
 
 updateWeibullGraph();
